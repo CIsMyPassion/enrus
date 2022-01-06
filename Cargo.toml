@@ -5,6 +5,17 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "enrus"
+path = "src/lib.rs"
+
+[[bin]]
+name = "test"
+path = "src/main.rs"
+
 [dependencies]
 rhai = "1.3.0"
-gfx = "0.18.2"
+vulkano = "0.22.0"
+vulkano-win = "0.22.0"
+vulkano-shaders = "0.22.0"
+winit = "0.24.0"
