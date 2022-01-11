@@ -25,6 +25,8 @@ use winit::window::{Window, WindowBuilder};
 
 use std::sync::Arc;
 
+pub mod font;
+
 pub fn create_window() {
     let required_extensions = vulkano_win::required_extensions();
     let instance = Instance::new(None, &required_extensions, None)
