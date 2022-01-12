@@ -1,16 +1,14 @@
-use font_kit::{source::SystemSource, canvas::{Canvas, Format, RasterizationOptions}, hinting::HintingOptions};
+use std::path::Path;
+
+use font_kit::{canvas::{Canvas, Format, RasterizationOptions}, hinting::HintingOptions, font::Font};
 use pathfinder_geometry::{transform2d::Transform2F, vector::{Vector2I, Vector2F}};
 
 use crate::texture::save_grayscale;
 
 pub fn test() {
 
-    let font = SystemSource::new()
-        .select_by_postscript_name("ArialMT")
-        .unwrap()
-        .load()
-        .unwrap();
-    println!("Font loaded");
+    let path = Path::new(r"Sauce Code Pro Medium Nerd Font Complete Mono.ttf");
+    let font = Font::from_path(path, 0).unwrap();
 
     let glyph_id = font.glyph_for_char('A').unwrap();
     let mut canvas = Canvas::new(Vector2I::splat(32), Format::A8);
