@@ -3,7 +3,8 @@ use std::path::Path;
 use font_kit::{canvas::{Canvas, Format, RasterizationOptions}, hinting::HintingOptions, font::Font};
 use pathfinder_geometry::{transform2d::Transform2F, vector::{Vector2I, Vector2F}};
 
-use crate::texture::save_grayscale;
+use crate::texture::Texture;
+use crate::texture::saver::save;
 
 pub fn test() {
 
@@ -33,7 +34,9 @@ pub fn test() {
     ).unwrap();
     println!("Rasterized");
     print_canvas(&canvas);
-    save_grayscale(Vector2I::splat(32), &canvas.pixels);
+
+    let texture = Texture::new(Vector2I::splat(32), crate::texture::Format::Grayscale, canvas.pixels.clone());
+    save(&texture, String::from("out.png"));
 }
 
 fn print_canvas(canvas: &Canvas) {
